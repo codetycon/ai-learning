@@ -1,4 +1,5 @@
 from json import dumps;
+from dataclasses import asdict;
 
 def print_user(user):
     print(f"ID: {user.id}")
@@ -9,24 +10,10 @@ def print_user(user):
         print(f"- {skill}")
 
 def to_json(user): # I want to convert user into a JSON object  
-    dumps_user = dumps({
-        "id": user.id,
-        "name": user.name,
-        "age": user.age,
-        "skills": user.skills
-    }, indent=2)
-    print(dumps_user);
-    # want to serelize user into a JSON string and print it to the console.
-    json_string = dumps({
-        "id": user.id,
-        "name": user.name,
-        "age": user.age,
-        "skills": user.skills
-    });
-    print(json_string);
+    return dumps(asdict(user), indent=2)
     
 
-def devide(a, b):
+def divide(a, b):
     if b == 0:
         raise ValueError("Cannot divide by zero")
     return a / b
